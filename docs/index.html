@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App - By Solomon Nnajieze</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!--
+         The Header: dark navy nav bar, title only
+   -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <h1 class="navbar__title">&#9729; Weather App</h1>
+    </div>
+  </header>
+
+  <!-- 
+         The main section: all dynamic weather content lives here
+   -->
+  <main class="app-container">
+
+    <!-- Search form: text input + button -->
+    <form class="search-form" id="searchForm" role="search" aria-label="Search for a city">
+      <input type="text" class="search-form__input" id="cityInput" placeholder="Enter city name…" aria-label="City name"
+        autocomplete="off" />
+      <button type="submit" class="search-form__btn" id="searchBtn">Search</button>
+    </form>
+
+    <!-- Search history: quick-access buttons for the last 5 cities (bonus feature) -->
+    <div class="search-history" id="searchHistory" aria-label="Recent searches"></div>
+
+    <!-- Loading indicator: shown while API calls are in flight -->
+    <div class="loading" id="loading" aria-live="polite" hidden>
+      <span class="loading__spinner" aria-hidden="true"></span>
+      Loading…
+    </div>
+
+    <!-- Error message area: shown when city is not found or network fails -->
+    <div class="error-message" id="errorMessage" role="alert" aria-live="assertive" hidden></div>
+
+    <!-- 
+           The Hero section: teal background, current weather summary
+     -->
+    <section class="hero" id="heroSection" hidden aria-label="Current weather">
+
+      <!-- Unit toggle button: switches °C / °F without re-fetching (bonus feature) -->
+      <button class="unit-toggle" id="unitToggle" aria-label="Toggle temperature unit">°C / °F</button>
+
+      <!-- Animated weather icon (bonus feature — CSS animation applied via JS) -->
+      <div class="hero__icon" id="heroIcon" aria-hidden="true"></div>
+
+      <!-- City name and country -->
+      <h2 class="hero__city" id="heroCity"></h2>
+
+      <!-- Temperature display -->
+      <p class="hero__temp" id="heroTemp"></p>
+
+      <!-- Weather description and feels-like -->
+      <p class="hero__desc" id="heroDesc"></p>
+
+    </section>
+
+    <!--
+           Stats row: three equal columns below the hero
+    -->
+    <section class="stats-row" id="statsRow" hidden aria-label="Weather statistics">
+
+      <div class="stats-row__item">
+        <span class="stats-row__label">Humidity</span>
+        <strong class="stats-row__value" id="statHumidity">—</strong>
+      </div>
+
+      <div class="stats-row__item">
+        <span class="stats-row__label">Wind</span>
+        <strong class="stats-row__value" id="statWind">—</strong>
+      </div>
+
+      <div class="stats-row__item">
+        <span class="stats-row__label">UV Index</span>
+        <strong class="stats-row__value" id="statUV">—</strong>
+      </div>
+
+    </section>
+
+    <!--
+           Forecast section: 5-day daily forecast list
+    -->
+    <section class="forecast" id="forecastSection" hidden aria-label="5-day forecast">
+      <h3 class="forecast__heading">5-DAY FORECAST</h3>
+
+      <!-- Forecast rows are injected here by JavaScript -->
+      <ul class="forecast__list" id="forecastList"></ul>
+    </section>
+
+  </main>
+
+  <!-- script linked at the bottom of body as required -->
+  <script src="script.js"></script>
+</body>
+
+</html>
